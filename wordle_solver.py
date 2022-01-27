@@ -12,9 +12,9 @@ if __name__ == '__main__':
     for i in english_words:
         if len(i) == 5:
             wordle.append(i)
+    final = wordle.copy()
     while(1):
-        final = []
-        x = input("Ënter the characters that are in the word(type 'stop' to exit): ")
+        x = input("Enter the characters that are in the word(type 'stop' to exit): ")
         if x == "stop":
             break
         char_in = list(x)
@@ -24,17 +24,26 @@ if __name__ == '__main__':
                 if j in word:
                     count += 1
             if count == len(char_in):
-                final.append(word)
-        y = input("Ënter the characters that are definitely not in the word: ")
+                continue
+            else:
+                try:
+                    final.remove(word)
+                except:
+                    continue
+        y = input("Enter the characters that are definitely not in the word: ")
         if y == "":
             final.append("null")
         else:
             char_out = list(y)
+            print(char_out)
             for k in char_out:
-                for word1 in wordle:
-                    if k in word1:
-                        wordle.remove(word1)
-                        if word1 in final:
-                            final.remove(word1)
-        for m in final:
+                for i in range (0,len(wordle)):
+                    if k in wordle[i]:
+                        if wordle[i] in final:
+                            final.remove(wordle[i])
+                        wordle[i] = "12345"
+        z = input("Positions of letters: ")
+        li = "\n".join(final)
+        xlist = re.findall(z,li)
+        for m in xlist:
             print(m)
