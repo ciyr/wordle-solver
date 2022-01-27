@@ -35,7 +35,6 @@ if __name__ == '__main__':
             final.append("null")
         else:
             char_out = list(y)
-            print(char_out)
             for k in char_out:
                 for i in range (0,len(wordle)):
                     if k in wordle[i]:
